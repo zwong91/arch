@@ -3,6 +3,9 @@
 .globl main
 main:
     # Linus 在汇编程序中直接使用系统调用, 说明as86和gnu at&t 区别
+    # as -o att.o att.s
+    # ld -o att att.o
+    # ./att
     movl $4, %eax # write   # 系统调用号, 写操作
     movl $1, %ebx # stdout  # 参数1 写调用参数fd, 1 == stdout
     movl $message, %ecx # buffer   # 参数2 缓冲区指针
