@@ -73,13 +73,19 @@ BSS Block Started Symbol; `resb`
 
 ## 寻址方式
 
-> [offset_address + index * size + base_address] ; 32 bit
+> [offset_address + index * size + base_address] ; intel 32 bit
 
-> base_address(offset_address, index, size)
+> base_address(offset_address, index, size)  at&t
 
 offset_address, index 必须是寄存器，size 1, 2, 4, 8
 
 ```s
 movl %edx, 4(%edi, %eax, 8) # att 语法
 mov dword [edi + eax * 8 + 4] ; Intel 语法
+```
+
+```s
+*(p+1)      # c
+l(%eax)     # att
+[eax + l]   ; Intel
 ```
